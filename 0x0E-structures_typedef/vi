@@ -1,0 +1,85 @@
+#ifndef DOG_H
+#define DOG_H
+
+/**
+ * struct dog - a dog's basic info
+ * @name: First member
+ * @age: Second member
+ * @owner: Third member
+ *
+ * Description: Longer description
+ */
+struct dog
+{
+    char *name;
+    float age;
+    char *owner;
+};
+
+/**
+ * dog_t - typedef for struct dog
+ */
+typedef struct dog dog_t;
+
+/**
+ * init_dog - initializes a dog struct
+ * @d: pointer to struct dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ *
+ * Description: This function initializes a dog struct with the given values
+ */
+void init_dog(struct dog *d, char *name, float age, char *owner);
+
+/**
+ * print_dog - prints a dog struct
+ * @d: pointer to struct dog
+ *
+ * Description: This function prints the contents of a dog struct
+ */
+void print_dog(struct dog *d);
+
+/**
+ * new_dog - creates a new dog struct
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ *
+ * Return: pointer to new dog struct
+ *
+ * Description: This function creates a new dog struct with the given values
+ */
+dog_t *new_dog(char *name, float age, char *owner);
+
+/**
+ * free_dog - frees a dog struct
+ * @d: pointer to struct dog
+ *
+ * Description: This function frees the memory allocated for a dog struct
+ */
+void free_dog(dog_t *d);
+
+/**
+ * _strcpy - copies a string to a buffer
+ * @dest: destination buffer
+ * @src: source string
+ *
+ * Return: pointer to destination buffer
+ *
+ * Description: This function copies the contents of a string to a buffer
+ */
+char *_strcpy(char *dest, char *src);
+
+/**
+ * _strlen - gets the length of a string
+ * @s: string
+ *
+ * Return: length of string
+ *
+ * Description: This function gets the length of a string
+ */
+int _strlen(char *s);
+
+#endif /* DOG_H */
+

@@ -1,43 +1,44 @@
 /**
 
-*add_node_at_index - Adds a new node in a linked list,
+*add_node_at_index - Adds a new node in a,
 *at a given position
 *@start: pointer to the first node in the list
 *@position: index where the new node is added
 *@value: data to insert in the new node
 *Return: pointer to the new node, or NULL
 */
-listint_t *add_node_at_index(listint_t **start, unsigned int position, int value)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-unsigned int i;
-listint_t *new_node;
-listint_t *temp_node = *start;
+	unsigned int i;
+	listint_t *new;
+	listint_t *temp = *head;
 
-new_node = malloc(sizeof(listint_t));
-if (!new_node || !start)
-return (NULL);
+	new = malloc(sizeof(listint_t));
+	if (!new || !head)
+		return (NULL);
 
-new_node->n = value;
-new_node->next = NULL;
+	new->n = n;
+	new->next = NULL;
 
-if (position == 0)
-{
-new_node->next = *start;
-*start = new_node;
-return (new_node);
+	if (idx == 0)
+	{
+		new->next = *head;
+		*head = new;
+		return (new);
+	}
+
+	for (i = 0; temp && i < idx; i++)
+	{
+		if (i == idx - 1)
+		{
+			new->next = temp->next;
+			temp->next = new;
+			return (new);
+		}
+		else
+			temp = temp->next;
+	}
+
+	return (NULL);
 }
 
-for (i = 0; temp_node && i < position; i++)
-{
-if (i == position - 1)
-{
-new_node->next = temp_node->next;
-temp_node->next = new_node;
-return (new_node);
-}
-else
-temp_node = temp_node->next;
-}
-
-return (NULL);
-}

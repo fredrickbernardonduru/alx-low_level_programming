@@ -1,37 +1,24 @@
-#ifndef LNKDLST_H
-#define LNKDLST_H
-
-#include <stdio.h>
-#include <stdlib.h>
+#include "lists.h"
 
 /**
-*createNode - creates a new node and returns a pointer to it
-@data: integer data to insert in that new node
-*Return: pointer to the new node, or NULL if it fails
-*/
-ListNode *createNode(const int data)
+ * add_nodeint - adds a new node at the beginning of a linked list
+ * @head: pointer to the first node in the list
+ * @n: data to insert in that new node
+ *
+ * Return: pointer to the new node, or NULL if it fails
+ */
+listint_t *add_nodeint(listint_t **head, const int n)
 {
-ListNode *new = malloc(sizeof(ListNode));
-if (!new)
-return NULL;
-new->data = data;
-new->next = NULL;
-return new;
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (!new)
+		return (NULL);
+
+	new->n = n;
+	new->next = *head;
+	*head = new;
+
+	return (new);
 }
-/**
-*insertAtBeginning - adds a new node at the beginning of a linked list
-*@head: pointer to the first node in the list
-*@data: data to insert in that new node
-*Return: pointer to the new node, or NULL if it fails
-*/
-ListNode *insertAtBeginning(ListNode **head, const int data)
-{
-ListNode *newNode = createNode(data);
-if (!newNode)
-return NULL;
-newNode->next = *head;
-*head = newNode;
-return newNode;
-}
-#endif
-}
+
